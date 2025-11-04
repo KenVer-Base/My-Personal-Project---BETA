@@ -1,0 +1,213 @@
+/* === PENGATURAN DASAR & FONT === */
+:root {
+    --primary-dark: #0d1b2a;
+    --secondary-dark: #1b263b;
+    --main-blue: #0056b3; /* Warna biru yang lebih modern */
+    --light-blue-active: #415a77;
+    --background-light: #f4f7fa;
+    --text-light: #e0e1dd;
+    --text-dark: #333;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+/* === STRUKTUR UTAMA HALAMAN === */
+.page-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* === STYLING SIDEBAR (KIRI) === */
+.sidebar {
+    width: 260px;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.sidebar-header {
+    padding: 0 25px;
+    margin-bottom: 30px;
+}
+
+.sidebar-header h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.sidebar-nav {
+    flex-grow: 1; /* Mendorong footer ke bawah */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara ikon dan teks */
+    padding: 15px 25px;
+    margin: 5px 15px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--secondary-dark);
+}
+
+.sidebar-nav a.active {
+    background-color: var(--light-blue-active);
+    color: white;
+    font-weight: 600;
+}
+
+.sidebar-nav i {
+    width: 20px; /* Agar semua teks sejajar */
+    text-align: center;
+}
+
+/* === STYLING KONTEN UTAMA (KANAN) === */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.main-header {
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* === Kartu Statistik === */
+.stat-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--main-blue);
+}
+
+.stat-card h4 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.stat-card .stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.stat-card .stat-subtext {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.stat-subtext.success {
+    color: #28a745;
+    font-weight: 500;
+}
+
+/* === Grafik Pemasukan === */
+.chart-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.chart-header h2 {
+    font-size: 1.2rem;
+}
+
+.btn-refresh {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-refresh:hover {
+    background-color: #e0e0e0;
+}
+
+.chart-area {
+    height: 300px;
+    display: flex;
+    align-items: flex-end; /* Membuat bar tumbuh dari bawah */
+    gap: 20px;
+    padding: 0 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.chart-area .bar {
+    flex: 1;
+    background-color: var(--secondary-dark);
+    border-radius: 5px 5px 0 0; /* Sudut melengkung hanya di atas */
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    color: #888;
+    font-weight: 500;
+}
+
+/* === Responsif untuk Layar Kecil === */
+@media (max-width: 992px) {
+    .sidebar {
+        position: fixed; /* atau absolute, tergantung kebutuhan */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        /* Logika untuk menampilkan/menyembunyikan sidebar di mobile butuh JavaScript */
+    }
+    .main-content {
+        width: 100%;
+    }
+    
+}
